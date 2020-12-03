@@ -8,10 +8,20 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = "https://maven.pkg.github.com/octocat/hello-world"
+        credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 test {
     useJUnitPlatform()
 }
+
+
 dependencies {
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
     implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
