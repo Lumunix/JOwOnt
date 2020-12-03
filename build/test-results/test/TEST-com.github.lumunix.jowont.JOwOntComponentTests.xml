@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.github.lumunix.jowont.JOwOntComponentTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-03T02:54:44" hostname="RAZER-DESKTOP" time="0.197">
+  <properties/>
+  <testcase name="unmarshalTestSuite()" classname="com.github.lumunix.jowont.JOwOntComponentTests" time="0.197"/>
+  <system-out><![CDATA[com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests
+com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

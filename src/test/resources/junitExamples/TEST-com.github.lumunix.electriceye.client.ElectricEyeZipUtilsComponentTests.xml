@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.github.lumunix.electriceye.client.ElectricEyeZipUtilsComponentTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-28T05:14:15" hostname="RAZER-DESKTOP" time="0.082">
+  <properties/>
+  <testcase name="testCreateZip()" classname="com.github.lumunix.electriceye.client.ElectricEyeZipUtilsComponentTests" time="0.082"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
