@@ -1,7 +1,6 @@
 package com.github.lumunix.jowont.models;
 
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -19,8 +18,7 @@ import java.util.List;
 @Accessors(chain = true)
 @XmlRootElement(name = "testsuite")
 public class JUnitTestSuite {
-    @XmlAttribute
-    private boolean disabled;
+
     @XmlAttribute
     private int errors;
     @XmlAttribute
@@ -55,6 +53,6 @@ public class JUnitTestSuite {
 
     @Override
     public String toString() {
-        return ReflectionToStringBuilder.toStringExclude(this, "systemOut", "systemErr").replace("pkg", "package");
+        return ReflectionToStringBuilder.toStringExclude(this, "systemOut", "systemErr");
     }
 }

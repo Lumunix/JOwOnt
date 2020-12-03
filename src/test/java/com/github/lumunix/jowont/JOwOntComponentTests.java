@@ -23,7 +23,14 @@ public class JOwOntComponentTests {
     public void unmarshalTestSuite() throws IOException, JAXBException, XMLStreamException {
         final InputStream inputXml =
                 getClass().getClassLoader().getResourceAsStream(junitFile1);
+        final InputStream inputXml2 =
+                getClass().getClassLoader().getResourceAsStream(junitFile2);
         JUnitTestSuite testSuite = JOwOnt.unmarshalTestSuite(inputXml);
+        JUnitTestSuite testSuite2 = JOwOnt.unmarshalTestSuite(inputXml2);
+
+
+
+
         System.out.println(testSuite.getName());
         System.out.println(testSuite.getName());
 
