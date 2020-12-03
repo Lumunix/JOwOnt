@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-28T05:14:13" hostname="RAZER-DESKTOP" time="0.001">
-  <properties/>
-  <testcase name="testItem1()" classname="com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests" time="0.0"/>
-  <testcase name="testItem2()" classname="com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests" time="0.0"/>
-  <testcase name="testItem3()" classname="com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
