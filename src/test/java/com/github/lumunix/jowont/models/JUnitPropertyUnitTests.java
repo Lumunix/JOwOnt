@@ -14,7 +14,7 @@ public class JUnitPropertyUnitTests {
     }
 
     @Test
-    public void toStringOperation(){
+    public void getterAndSetterAndToStringOperation(){
         JUnitProperty property = new JUnitProperty();
         property.setName("TestName");
         property.setValue("TestValue");

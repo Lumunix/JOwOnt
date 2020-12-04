@@ -14,7 +14,7 @@ public class JUnitFailureUnitTests {
     }
 
     @Test
-    public void toStringOperation(){
+    public void getterAndSetterAndToStringOperation(){
         JUnitFailure failure = new JUnitFailure();
         failure.setMessage("TestMessage");
         failure.setType("TestType");

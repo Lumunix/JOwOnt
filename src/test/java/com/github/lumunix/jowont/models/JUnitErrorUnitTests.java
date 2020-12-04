@@ -15,7 +15,7 @@ public class JUnitErrorUnitTests {
     }
 
     @Test
-    public void toStringOperation(){
+    public void getterAndSetterAndToStringOperation(){
         JUnitError error = new JUnitError();
         error.setMessage("TestMessage");
         error.setType("TestType");

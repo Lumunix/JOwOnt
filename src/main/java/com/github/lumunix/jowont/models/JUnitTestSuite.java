@@ -25,8 +25,6 @@ public class JUnitTestSuite {
     private int failures;
     @XmlAttribute
     private String hostname;
-    @XmlAttribute
-    private String id;
     @XmlAttribute(required = true)
     private String name;
     @XmlAttribute

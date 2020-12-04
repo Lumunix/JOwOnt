@@ -21,7 +21,7 @@ public class JUnitTestCaseUnitTests {
     }
 
     @Test
-    public void toStringOperation(){
+    public void getterAndSetterAndToStringOperation(){
         JUnitTestCase testcase = new JUnitTestCase();
         testcase.setClassName("TestClassname");
         testcase.setErrors(new ArrayList<>());
@@ -32,29 +32,14 @@ public class JUnitTestCaseUnitTests {
         testcase.setSystemOut("TestSystemOut");
         testcase.setTime(3.0);
 
-
-
         assertEquals("TestClassname",testcase.getClassName(),"The classname should have set");
         assertNotNull(testcase.getErrors(),"The errors should have initialized");
-        assertNotNull(testcase.getFailures(),"The failures should have failures");
-        assertEquals("TestName",testcase.getName(),"The name should have set");
-
-
-        assertNull(testcase.getErrors(),"The errors should have been null");
-        assertNull(testcase.getFailures(),"The failures should have been null");
-        assertNull(testcase.getName(),"The name should have been null");
-        assertNull(testcase.getSkipped(),"The skipped should have been null");
-        assertNull(testcase.getSystemErr(),"The systemerr should have been null");
-        assertNull(testcase.getSystemOut(),"The systemout should have been null");
-        assertNull(testcase.getTime(), "The time should have been zero");
-
-        /*
-        testcase.setAssertions(1)
-        testcase.setName("TestName");
-        testcase.setValue("TestValue");
-        assertNotNull(property.toString());
-        assertTrue(property.toString().length() > 0);
-
-         */
+        assertNotNull(testcase.getFailures(),"The failures should have been initialized");
+        assertEquals("TestName",testcase.getName(),"The name should have been set");
+        assertNotNull(testcase.getSkipped(),"Expected the skipped object");
+        assertEquals("TestSystemError",testcase.getSystemErr(),"The TestSystemOut should have been set");
+        assertEquals("TestSystemOut",testcase.getSystemOut(),"The TestSystemOut should have been set");
+        assertEquals(3.0,testcase.getTime(),"The Time should have been set");
+        assertTrue(testcase.toString().length() > 0);
     }
 }

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JUnitSkippedUnitTests {
     @Test
-    public void toStringOperation(){
+    public void getterAndSetterAndToStringOperation(){
         JUnitSkipped skipped = new JUnitSkipped();
         assertTrue(skipped.toString().length() > 0);
     }
