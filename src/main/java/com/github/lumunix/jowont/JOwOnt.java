@@ -22,7 +22,7 @@ public class JOwOnt {
     private static final String systemErrStart = "<system-err>";
     private static final String systemErrEnd = "</system-err>";
 
-    public static JUnitTestSuite unmarshalTestSuite(InputStream stream) throws JAXBException, XMLStreamException, IOException {
+    public static JUnitTestSuite parseJunitFile(InputStream stream) throws JAXBException, XMLStreamException, IOException {
         JAXBContext context = JAXBContext.newInstance(JUnitTestSuite.class);
 
         XMLInputFactory xif = XMLInputFactory.newFactory();

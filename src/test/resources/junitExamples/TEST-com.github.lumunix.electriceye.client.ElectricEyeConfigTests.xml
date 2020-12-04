@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.github.lumunix.electriceye.client.ElectricEyeConfigTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-28T05:14:14" hostname="RAZER-DESKTOP" time="0.0">
-  <properties/>
-  <testcase name="testCreationOfConfigObject()" classname="com.github.lumunix.electriceye.client.ElectricEyeConfigTests" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

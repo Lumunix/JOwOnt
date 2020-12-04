@@ -10,41 +10,36 @@ import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class JOwOntComponentTests {
-    private static String badFile = "junitExamples/badFile.xml";
-
-    private static String junitFile1 = "junitExamples/TEST-com.github.lumunix.electriceye.client.ElectricEyeAnnotationProcessorTests.xml";
-    private static String junitFile2 = "junitExamples/TEST-com.github.lumunix.electriceye.client.ElectricEyeApiComponentTests.xml";
-    private static String junitFile3 = "junitExamples/TEST-com.github.lumunix.electriceye.client.ElectricEyeConfigTests.xml";
-    private static String junitFile4 = "junitExamples/TEST-com.github.lumunix.electriceye.client.ElectricEyeFunctionalTest.xml";
-    private static String junitFile5 = "junitExamples/TEST-com.github.lumunix.electriceye.client.ElectricEyeGradlePluginComponentTests.xml";
-    private static String junitFile6 = "junitExamples/TEST-com.github.lumunix.electriceye.client.ElectricEyeZipUtilsComponentTests.xml";
+    private static final String badFile = "junitExamples/badFile.xml";
+    private static final String goodJunitFileAllPass = "junitExamples/goodJunitFileAllPass.xml";
+    private static final String goodJunitFileWithFailures = "junitExamples/goodJunitFileWithFailures.xml";
 
     @Test
-    public void unmarshalTestSuite() throws IOException, JAXBException, XMLStreamException {
+    public void parseJunitFile() throws IOException, JAXBException, XMLStreamException {
         final InputStream inputXml =
-                getClass().getClassLoader().getResourceAsStream(junitFile1);
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
         final InputStream inputXml2 =
-                getClass().getClassLoader().getResourceAsStream(junitFile2);
-        JUnitTestSuite testSuite = JOwOnt.unmarshalTestSuite(inputXml);
-        JUnitTestSuite testSuite2 = JOwOnt.unmarshalTestSuite(inputXml2);
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileWithFailures);
 
-
-        System.out.println(testSuite.getName());
-        System.out.println(testSuite.getName());
-
+        JUnitTestSuite testSuite = JOwOnt.parseJunitFile(inputXml);
+        JUnitTestSuite testSuite2 = JOwOnt.parseJunitFile(inputXml2);
+        assertNotNull(testSuite);
+        assertNotNull(testSuite2);
 
     }
 
     @Test
-    public void unmarshalTestSuite_testBadXmlFile(){
+    public void parseJunitFile_testBadXmlFile(){
         final InputStream inputXml =
                 getClass().getClassLoader().getResourceAsStream(badFile);
+
         assertThrows(UnmarshalException.class, () -> {
-            JOwOnt.unmarshalTestSuite(inputXml);
+            JOwOnt.parseJunitFile(inputXml);
         });
 
     }
@@ -53,9 +48,7 @@ public class JOwOntComponentTests {
     public void createEscapedJUnitInputStream(){
         final InputStream inputXml =
                 getClass().getClassLoader().getResourceAsStream(badFile);
-        assertThrows(UnmarshalException.class, () -> {
-            JOwOnt.unmarshalTestSuite(inputXml);
-        });
 
+        assertNotNull(inputXml);
     }
 }

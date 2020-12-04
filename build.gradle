@@ -1,16 +1,18 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
     id 'idea'
 }
 
+sourceCompatibility = JavaVersion.VERSION_15
 group 'com.github.lumunix'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()
     maven {
         name = "GitHubPackages"
-        url = "https://maven.pkg.github.com/octocat/hello-world"
+        url = "https://github.com/Lumunix/JOwOnt"
         credentials {
             username = System.getenv("GITHUB_ACTOR")
             password = System.getenv("GITHUB_TOKEN")

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.github.lumunix.electriceye.client.ElectricEyeGradlePluginComponentTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-28T05:14:14" hostname="RAZER-DESKTOP" time="0.731">
-  <properties/>
-  <testcase name="testElectricEyeConfigExtension()" classname="com.github.lumunix.electriceye.client.ElectricEyeGradlePluginComponentTests" time="0.165"/>
-  <testcase name="testPluginApply()" classname="com.github.lumunix.electriceye.client.ElectricEyeGradlePluginComponentTests" time="0.557"/>
-  <testcase name="testAddElectricEyeTaskToProject()" classname="com.github.lumunix.electriceye.client.ElectricEyeGradlePluginComponentTests" time="0.008"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
