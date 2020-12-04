@@ -3,6 +3,23 @@ plugins {
     id 'maven-publish'
     id 'idea'
 }
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/Lumunix/JOwOnt"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
 
 sourceCompatibility = JavaVersion.VERSION_15
 group 'com.github.lumunix'
@@ -10,14 +27,7 @@ version '1.0.0'
 
 repositories {
     mavenCentral()
-    maven {
-        name = "GitHubPackages"
-        url = "https://github.com/Lumunix/JOwOnt"
-        credentials {
-            username = System.getenv("GITHUB_ACTOR")
-            password = System.getenv("GITHUB_TOKEN")
-        }
-    }
+
 }
 test {
     useJUnitPlatform()
@@ -34,5 +44,4 @@ dependencies {
     implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
     implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.3'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.0'
-
 }

@@ -47,8 +47,10 @@ public class JOwOntComponentTests {
     @Test
     public void createEscapedJUnitInputStream(){
         final InputStream inputXml =
-                getClass().getClassLoader().getResourceAsStream(badFile);
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
+
 
         assertNotNull(inputXml);
     }
+
 }
