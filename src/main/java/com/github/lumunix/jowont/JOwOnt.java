@@ -1,17 +1,23 @@
 package com.github.lumunix.jowont;
 
 import com.github.lumunix.jowont.models.JUnitTestSuite;
+import com.github.lumunix.jowont.models.JUnitTestSuites;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.text.StringEscapeUtils;
+import org.xml.sax.SAXException;
 
 
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -21,9 +27,26 @@ public class JOwOnt {
     private static final String systemOutEnd = "</system-out>";
     private static final String systemErrStart = "<system-err>";
     private static final String systemErrEnd = "</system-err>";
+    private static final File jUnitXSDSchemaFile = new File("src/main/resources/junit.xsd");
 
-    public static JUnitTestSuite parseJunitFile(InputStream stream) throws JAXBException, XMLStreamException, IOException {
-        JAXBContext context = JAXBContext.newInstance(JUnitTestSuite.class);
+    public static Object parseJunitXml(InputStream stream){
+        try {
+            JAXBContext context = JAXBContext.newInstance(JUnitTestSuites.class, JUnitTestSuite.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            //Setup schema validator
+            SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema junitSchema = sf.newSchema(jUnitXSDSchemaFile);
+            unmarshaller.setSchema(junitSchema);
+
+            return unmarshaller.unmarshal(createJunitXMLStreamReader(stream));
+        }
+        catch(XMLStreamException|IOException|JAXBException|SAXException e){
+           throw new RuntimeException(e);
+        }
+    }
+
+    public static XMLStreamReader createJunitXMLStreamReader(InputStream stream) throws XMLStreamException, IOException {
 
         XMLInputFactory xif = XMLInputFactory.newFactory();
         XMLStreamReader xsr = xif.createXMLStreamReader(createEscapedJUnitInputStream(stream));
@@ -33,9 +56,7 @@ public class JOwOnt {
             }
             return true;
         });
-
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        return (JUnitTestSuite) unmarshaller.unmarshal(xsr);
+        return xsr;
     }
 
     public static InputStream createEscapedJUnitInputStream(InputStream stream) throws IOException {

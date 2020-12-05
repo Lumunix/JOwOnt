@@ -11,10 +11,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 @Setter
 @Accessors(chain = true)
 public class JUnitProperty {
+
     @XmlAttribute(required = true)
     private String name;
+
     @XmlAttribute(required = true)
     private String value;
+
 
     @Override
     public String toString() {

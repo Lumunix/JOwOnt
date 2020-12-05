@@ -10,7 +10,7 @@ public class JUnitFailureUnitTests {
         JUnitFailure failure = new JUnitFailure();
         assertNull(failure.getMessage(),"The message should have been null");
         assertNull(failure.getType(),"The type should have been null");
-        assertNull(failure.getValue(),"The value should have been null");
+
     }
 
     @Test
@@ -18,7 +18,6 @@ public class JUnitFailureUnitTests {
         JUnitFailure failure = new JUnitFailure();
         failure.setMessage("TestMessage");
         failure.setType("TestType");
-        failure.setValue("TestValue");
         assertNotNull(failure.toString());
         assertTrue(failure.toString().length() > 0);
     }

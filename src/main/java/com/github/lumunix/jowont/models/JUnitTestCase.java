@@ -13,24 +13,37 @@ import java.util.List;
 @Setter
 @Accessors(chain = true)
 public class JUnitTestCase {
-    @XmlAttribute(name = "classname", required = true)
-    private String className;
-    @XmlAttribute(required = true)
-    private String name;
-    @XmlAttribute
-    private Double time;
 
     @XmlElement
     private JUnitSkipped skipped;
+
     @XmlElement(name = "error")
     private List<JUnitError> errors;
+
     @XmlElement(name = "failure")
     private List<JUnitFailure> failures;
 
     @XmlElement(name = "system-out")
     private String systemOut;
+
     @XmlElement(name = "system-err")
     private String systemErr;
+
+    @XmlAttribute(required = true)
+    private String name;
+
+    @XmlAttribute
+    private int assertions;
+
+    @XmlAttribute
+    private Double time;
+
+    @XmlAttribute(name = "classname", required = true)
+    private String className;
+
+    @XmlAttribute
+    private String status;
+
 
     @Override
     public String toString() {

@@ -2,7 +2,9 @@ package com.github.lumunix.jowont;
 
 
 import com.github.lumunix.jowont.models.JUnitTestSuite;
+import com.github.lumunix.jowont.models.JUnitTestSuites;
 import org.junit.jupiter.api.Test;
+import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.UnmarshalException;
@@ -17,19 +19,31 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class JOwOntComponentTests {
     private static final String badFile = "junitExamples/badFile.xml";
     private static final String goodJunitFileAllPass = "junitExamples/goodJunitFileAllPass.xml";
+    private static final String goodJunitFileWithMultipleTestsuite = "junitExamples/goodJunitFileMultipleTestsuite.xml";
     private static final String goodJunitFileWithFailures = "junitExamples/goodJunitFileWithFailures.xml";
 
     @Test
-    public void parseJunitFile() throws IOException, JAXBException, XMLStreamException {
+    public void parseJunitFile() throws IOException, JAXBException, XMLStreamException, SAXException {
         final InputStream inputXml =
                 getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
         final InputStream inputXml2 =
                 getClass().getClassLoader().getResourceAsStream(goodJunitFileWithFailures);
 
-        JUnitTestSuite testSuite = JOwOnt.parseJunitFile(inputXml);
-        JUnitTestSuite testSuite2 = JOwOnt.parseJunitFile(inputXml2);
-        assertNotNull(testSuite);
-        assertNotNull(testSuite2);
+        Object obj = JOwOnt.parseJunitXml(inputXml);
+
+
+        JUnitTestSuites parsedTestSuites;
+
+        if(obj instanceof JUnitTestSuites)
+            parsedTestSuites = (JUnitTestSuites) obj;
+
+
+
+
+
+       // JUnitTestSuite testSuite2 = JOwOnt.parseJunitFile(inputXml2);
+       // assertNotNull(testSuite);
+       // assertNotNull(testSuite2);
 
     }
 
@@ -37,9 +51,9 @@ public class JOwOntComponentTests {
     public void parseJunitFile_testBadXmlFile(){
         final InputStream inputXml =
                 getClass().getClassLoader().getResourceAsStream(badFile);
-
+        JOwOnt.parseJunitXml(inputXml);
         assertThrows(UnmarshalException.class, () -> {
-            JOwOnt.parseJunitFile(inputXml);
+            JOwOnt.parseJunitXml(inputXml);
         });
 
     }
@@ -51,6 +65,23 @@ public class JOwOntComponentTests {
 
 
         assertNotNull(inputXml);
+    }
+
+
+    @Test
+    public void experimental() throws IOException, JAXBException, XMLStreamException, SAXException {
+        final InputStream inputXml =
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileWithMultipleTestsuite);
+        final InputStream inputXml2 =
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileWithFailures);
+
+        Object testSuite = JOwOnt.parseJunitXml(inputXml);
+        Object testSuite2 = JOwOnt.parseJunitXml(inputXml2);
+
+
+        assertNotNull(testSuite);
+
+
     }
 
 }
