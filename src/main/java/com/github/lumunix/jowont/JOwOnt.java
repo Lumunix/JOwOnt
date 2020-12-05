@@ -23,14 +23,14 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 
 public class JOwOnt {
+    private static final File jUnitXSDSchemaFile = new File("src/main/resources/junit.xsd");
     private static final String systemOutStart = "<system-out>";
     private static final String systemOutEnd = "</system-out>";
     private static final String systemErrStart = "<system-err>";
     private static final String systemErrEnd = "</system-err>";
-    private static final File jUnitXSDSchemaFile = new File("src/main/resources/junit.xsd");
 
-    public static Object parseJunitXml(InputStream stream){
-        try {
+    public static Object parseJunitXml(InputStream stream) throws IOException, XMLStreamException, SAXException, JAXBException {
+
             JAXBContext context = JAXBContext.newInstance(JUnitTestSuites.class, JUnitTestSuite.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
@@ -40,10 +40,6 @@ public class JOwOnt {
             unmarshaller.setSchema(junitSchema);
 
             return unmarshaller.unmarshal(createJunitXMLStreamReader(stream));
-        }
-        catch(XMLStreamException|IOException|JAXBException|SAXException e){
-           throw new RuntimeException(e);
-        }
     }
 
     public static XMLStreamReader createJunitXMLStreamReader(InputStream stream) throws XMLStreamException, IOException {
