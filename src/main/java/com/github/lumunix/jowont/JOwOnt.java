@@ -7,23 +7,20 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.xml.sax.SAXException;
 
 
-import javax.xml.XMLConstants;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
+
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 
 public class JOwOnt {
-    private static final File jUnitXSDSchemaFile = new File("src/main/resources/junit.xsd");
     private static final String systemOutStart = "<system-out>";
     private static final String systemOutEnd = "</system-out>";
     private static final String systemErrStart = "<system-err>";
@@ -33,12 +30,6 @@ public class JOwOnt {
 
             JAXBContext context = JAXBContext.newInstance(JUnitTestSuites.class, JUnitTestSuite.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-
-            //Setup schema validator
-            SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema junitSchema = sf.newSchema(jUnitXSDSchemaFile);
-            unmarshaller.setSchema(junitSchema);
-
             return unmarshaller.unmarshal(createJunitXMLStreamReader(stream));
     }
 

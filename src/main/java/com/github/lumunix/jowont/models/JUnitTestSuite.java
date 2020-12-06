@@ -19,8 +19,8 @@ import java.util.List;
 @XmlRootElement(name = "testsuite")
 public class JUnitTestSuite {
 
-    @XmlElement(name = "property")
     @XmlElementWrapper(name = "properties")
+    @XmlElement(name = "property")
     private List<JUnitProperty> properties;
 
     @XmlElement(name = "testcase")

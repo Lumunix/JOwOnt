@@ -48,10 +48,9 @@ public class JOwOntComponentTests {
     }
 
     @Test
-    public void parseJunitFile_testBadXmlFile(){
+    public void parseJunitFile_testBadXmlFile() throws SAXException, XMLStreamException, JAXBException, IOException {
         final InputStream inputXml =
                 getClass().getClassLoader().getResourceAsStream(badFile);
-        JOwOnt.parseJunitXml(inputXml);
         assertThrows(UnmarshalException.class, () -> {
             JOwOnt.parseJunitXml(inputXml);
         });
