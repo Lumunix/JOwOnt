@@ -16,6 +16,8 @@ public class JUnitTestSuitesUnitTests {
         assertNull(jUnitTestSuites.getName(),"The name should have been null");
         assertEquals(0,jUnitTestSuites.getTests(),"The tests should have been 0");
         assertEquals(0,jUnitTestSuites.getTime(),"The time should have been 0");
+        assertFalse(jUnitTestSuites.isDisabled(),"Disabled should have been false");
+        assertNull(jUnitTestSuites.getTestSuites(),"The testsuites should have been null");
 
     }
 
@@ -27,7 +29,7 @@ public class JUnitTestSuitesUnitTests {
         jUnitTestSuites.setName("TestName");
         jUnitTestSuites.setTests(8);
         jUnitTestSuites.setTime(5.0);
-
+        jUnitTestSuites.setTestSuites(new ArrayList<>());
 
         assertEquals(3,jUnitTestSuites.getErrors(),"The errors to be set");
         assertEquals(2,jUnitTestSuites.getFailures(),"The failures should be set");
@@ -35,6 +37,7 @@ public class JUnitTestSuitesUnitTests {
         assertEquals(8,jUnitTestSuites.getTests(),"The tests should be set");
         assertEquals(5.0,jUnitTestSuites.getTime(),"The time should have been set");
         assertTrue(jUnitTestSuites.toString().length() > 0);
+        assertNotNull(jUnitTestSuites.getTestSuites(),"The testsuites should have been initialized");
 
     }
 }
