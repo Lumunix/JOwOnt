@@ -24,11 +24,20 @@ public class JOwOntComponentTests {
 
     @Test
     public void parseJunitFile() throws IOException, JAXBException, XMLStreamException, SAXException {
-        final InputStream inputXml =
+        final InputStream inputXml1 =
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
+        final InputStream inputXml2 =
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
+        final InputStream inputXml3 =
                 getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
 
-        Object obj = JOwOnt.parseJunitXml(inputXml);
-        assertNotNull(obj);
+
+        Object obj1 = JOwOnt.parseJunitXml(inputXml1);
+        Object obj2 = JOwOnt.parseJunitXml(inputXml2);
+        Object obj3 = JOwOnt.parseJunitXml(inputXml3);
+        assertNotNull(obj1);
+        assertNotNull(obj2);
+        assertNotNull(obj3);
 
     }
 
