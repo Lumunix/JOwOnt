@@ -1,8 +1,11 @@
 package com.github.lumunix.jowont;
 
 import com.github.lumunix.jowont.models.JUnitTestSuite;
+import com.github.lumunix.jowont.models.JUnitTestSuites;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.text.StringEscapeUtils;
+import org.xml.sax.SAXException;
+
 
 
 import javax.xml.bind.JAXBContext;
@@ -11,6 +14,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,8 +26,14 @@ public class JOwOnt {
     private static final String systemErrStart = "<system-err>";
     private static final String systemErrEnd = "</system-err>";
 
-    public static JUnitTestSuite parseJunitFile(InputStream stream) throws JAXBException, XMLStreamException, IOException {
-        JAXBContext context = JAXBContext.newInstance(JUnitTestSuite.class);
+    public static Object parseJunitXml(InputStream stream) throws IOException, XMLStreamException, SAXException, JAXBException {
+
+            JAXBContext context = JAXBContext.newInstance(JUnitTestSuites.class, JUnitTestSuite.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            return unmarshaller.unmarshal(createJunitXMLStreamReader(stream));
+    }
+
+    public static XMLStreamReader createJunitXMLStreamReader(InputStream stream) throws XMLStreamException, IOException {
 
         XMLInputFactory xif = XMLInputFactory.newFactory();
         XMLStreamReader xsr = xif.createXMLStreamReader(createEscapedJUnitInputStream(stream));
@@ -33,9 +43,7 @@ public class JOwOnt {
             }
             return true;
         });
-
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        return (JUnitTestSuite) unmarshaller.unmarshal(xsr);
+        return xsr;
     }
 
     public static InputStream createEscapedJUnitInputStream(InputStream stream) throws IOException {

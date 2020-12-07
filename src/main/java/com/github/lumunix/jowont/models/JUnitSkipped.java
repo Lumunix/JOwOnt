@@ -9,6 +9,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 @Setter
 @Accessors(chain = true)
 public class JUnitSkipped {
+
     @Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this);

@@ -14,6 +14,8 @@ public class JUnitTestCaseUnitTests {
         assertNull(testcase.getErrors(),"The errors should have been null");
         assertNull(testcase.getFailures(),"The failures should have been null");
         assertNull(testcase.getName(),"The name should have been null");
+        assertEquals(0,testcase.getAssertions(),"The assertions should have been 0");
+        assertNull(testcase.getStatus(),"The status should have been null");
         assertNull(testcase.getSkipped(),"The skipped should have been null");
         assertNull(testcase.getSystemErr(),"The systemerr should have been null");
         assertNull(testcase.getSystemOut(),"The systemout should have been null");
@@ -31,6 +33,8 @@ public class JUnitTestCaseUnitTests {
         testcase.setSystemErr("TestSystemError");
         testcase.setSystemOut("TestSystemOut");
         testcase.setTime(3.0);
+        testcase.setStatus("TestStatus");
+        testcase.setAssertions(5);
 
         assertEquals("TestClassname",testcase.getClassName(),"The classname should have set");
         assertNotNull(testcase.getErrors(),"The errors should have initialized");
@@ -41,5 +45,7 @@ public class JUnitTestCaseUnitTests {
         assertEquals("TestSystemOut",testcase.getSystemOut(),"The TestSystemOut should have been set");
         assertEquals(3.0,testcase.getTime(),"The Time should have been set");
         assertTrue(testcase.toString().length() > 0);
+        assertEquals("TestStatus",testcase.getStatus(),"The status should have been set");
+        assertEquals(5,testcase.getAssertions(),"The assertions should have been set");
     }
 }

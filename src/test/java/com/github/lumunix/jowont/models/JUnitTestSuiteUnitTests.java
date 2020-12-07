@@ -24,6 +24,9 @@ public class JUnitTestSuiteUnitTests {
         assertNull(jUnitTestSuite.getTestCases(),"The testcases should have been null");
         assertNull(jUnitTestSuite.getSystemErr(),"The systemerr should have been null");
         assertNull(jUnitTestSuite.getSystemOut(),"The systemout should have been null");
+        assertNull(jUnitTestSuite.getId(),"The Id should have been null");
+        assertFalse(jUnitTestSuite.isDisabled(),"Disabled should have been false");
+        assertNull(jUnitTestSuite.getPkg(),"The Pkg should have been null");
     }
 
     @Test
@@ -42,6 +45,9 @@ public class JUnitTestSuiteUnitTests {
         jUnitTestSuite.setTestCases(new ArrayList<>());
         jUnitTestSuite.setSystemErr("TestSystemError");
         jUnitTestSuite.setSystemOut("TestSystemOut");
+        jUnitTestSuite.setId("TestId");
+        jUnitTestSuite.setDisabled(true);
+        jUnitTestSuite.setPkg("TestPkg");
 
         assertEquals(3,jUnitTestSuite.getErrors(),"The errors to be set");
         assertEquals(2,jUnitTestSuite.getFailures(),"The failures should be set");
@@ -56,6 +62,9 @@ public class JUnitTestSuiteUnitTests {
         assertEquals("TestSystemError",jUnitTestSuite.getSystemErr(),"The systemerror should be set");
         assertEquals("TestSystemOut",jUnitTestSuite.getSystemOut(),"The systemout should be set");
         assertTrue(jUnitTestSuite.toString().length() > 0);
+        assertEquals("TestId",jUnitTestSuite.getId(),"The Id should have been set");
+        assertTrue(jUnitTestSuite.isDisabled(),"Disabled should have been set");
+        assertEquals("TestPkg",jUnitTestSuite.getPkg(),"The Pkg should have been set");
 
     }
 }

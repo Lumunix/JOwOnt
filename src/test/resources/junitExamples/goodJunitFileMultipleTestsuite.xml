@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 2.1.1 (Mac OS X 0.0.0)" package="" timestamp="2019-06-24T15:04:48" id="0" hostname="Ms-MacBook-Pro.local" tests="370" errors="0" failures="0" time="30.989">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
+    </properties>
+    <testcase name="test1" time="0.112" classname="com.test.t1"/>
+    <testcase name="test2" time="0.091" classname="com.test.t2"/>
+    <testcase name="test3" time="0.094" classname="com.test.t3"/>
+    <testcase name="test4" time="0.085" classname="com.test.t4"/>
+    <system-err/>
+  </testsuite>
+  <testsuite name="Chrome 75.0.3770 (Mac OS X 10.13.6)" package="" timestamp="2019-06-24T15:04:49" id="0" hostname="Ms-MacBook-Pro.local" tests="370" errors="0" failures="0" time="23.756">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"/>
+    </properties>
+    <testcase name="test5" time="0.079" classname="com.test.t5"/>
+    <testcase name="test6" time="0.08" classname="com.test.t6"/>
+    <testcase name="test7" time="0.068" classname="com.test.t7"/>
+    <testcase name="test8" time="0.073" classname="com.test.t8"/>
+    <system-err/>
+  </testsuite>
+</testsuites>

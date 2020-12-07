@@ -19,38 +19,58 @@ import java.util.List;
 @XmlRootElement(name = "testsuite")
 public class JUnitTestSuite {
 
-    @XmlAttribute
-    private int errors;
-    @XmlAttribute
-    private int failures;
-    @XmlAttribute
-    private String hostname;
-    @XmlAttribute(required = true)
-    private String name;
-    @XmlAttribute
-    private int skipped;
-    @XmlAttribute(required = true)
-    private int tests;
-    @XmlAttribute
-    private double time;
-    @XmlAttribute
-    private String timestamp;
-
-    @XmlElement(name = "property")
     @XmlElementWrapper(name = "properties")
+    @XmlElement(name = "property")
     private List<JUnitProperty> properties;
+
     @XmlElement(name = "testcase")
     private List<JUnitTestCase> testCases;
 
     @XmlElement(name = "system-out")
     private String systemOut;
+
     @XmlElement(name = "system-err")
     private String systemErr;
 
 
 
+    @XmlAttribute(required = true)
+    private String name;
+
+    @XmlAttribute(required = true)
+    private int tests;
+
+    @XmlAttribute
+    private int failures;
+
+    @XmlAttribute
+    private int errors;
+
+    @XmlAttribute
+    private double time;
+
+    @XmlAttribute
+    private boolean disabled;
+
+    @XmlAttribute
+    private int skipped;
+
+    @XmlAttribute
+    private String timestamp;
+
+    @XmlAttribute
+    private String hostname;
+
+    @XmlAttribute
+    private String id;
+
+    @XmlAttribute(name = "package")
+    private String pkg;
+
+
+
     @Override
     public String toString() {
-        return ReflectionToStringBuilder.toStringExclude(this, "systemOut", "systemErr");
+        return ReflectionToStringBuilder.toStringExclude(this, "systemOut", "systemErr").replace("pkg", "package");
     }
 }

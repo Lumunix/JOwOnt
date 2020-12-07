@@ -12,12 +12,15 @@ import javax.xml.bind.annotation.XmlValue;
 @Setter
 @Accessors(chain = true)
 public class JUnitError {
-    @XmlAttribute
-    private String message;
+
     @XmlAttribute
     private String type;
-    @XmlValue
-    private String value;
+
+
+    @XmlAttribute
+    private String message;
+
+
     @Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
