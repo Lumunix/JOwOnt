@@ -27,9 +27,9 @@ public class JOwOntComponentTests {
         final InputStream inputXml1 =
                 getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
         final InputStream inputXml2 =
-                getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileWithMultipleTestsuite);
         final InputStream inputXml3 =
-                getClass().getClassLoader().getResourceAsStream(goodJunitFileAllPass);
+                getClass().getClassLoader().getResourceAsStream(goodJunitFileWithFailures);
 
 
         Object obj1 = JOwOnt.parseJunitXml(inputXml1);
