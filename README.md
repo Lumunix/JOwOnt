@@ -1,7 +1,9 @@
 # **JOwOnt - OwO What's This?**
 
+## About
 Simple Junit XML parser that supports both single and multiple testsuite Junit xml files. This parser is based off the Jenkins Junit XSD specification.
 
+## Usage
 ```java
 import com.github.lumunix.jowont.JOwOnt;
 import com.github.lumunix.jowont.models.JUnitTestSuite;
